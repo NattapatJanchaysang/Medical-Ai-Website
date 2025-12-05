@@ -1,4 +1,9 @@
-import React from 'react'
+"use client"
+
+
+import React, { useEffect } from 'react'
+import axios from 'axios'
+import { useUser } from '@clerk/nextjs';
 
 function Provider({
   children,
@@ -6,8 +11,14 @@ function Provider({
   children: React.ReactNode;
 }>) {
 
-const CreateNewUser = () => {
-    
+    const {user}= useUser()
+useEffect(() => {
+    CreateNewUser()
+},[])
+
+const CreateNewUser = async () => {
+    const result = await axios.post('/api/users')
+    console.log(result)
 }
 
   return (
