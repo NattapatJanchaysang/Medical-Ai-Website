@@ -1,6 +1,6 @@
 "use client"
 import axios from 'axios'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState, useRef } from 'react'
 // ตรวจสอบ path ให้ถูกต้องตามโครงสร้างโปรเจคของคุณ
 import { docterAgent } from '../../_components/DocterAgentCard' 
@@ -8,9 +8,10 @@ import { Circle, Loader, PhoneCall, PhoneOff } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Vapi from '@vapi-ai/web';
+import { toast } from 'sonner'
 
 // --- Types ---
-type SessionDetail = {
+export type SessionDetail = {
   id: number,
   notes: string,
   sessionId: string,
@@ -34,6 +35,7 @@ function MedicalVoiceAgent() {
   const [messages, setMessages] = useState<MessageItem[]>([])
   const [callDuration, setCallDuration] = useState(0);
   const [loading,setLoading] = useState(false)
+  const router = useRouter()
   
   // Ref สำหรับเลื่อนหน้าจอแชท
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -92,7 +94,7 @@ function MedicalVoiceAgent() {
   };
 
 const StartCall = () => {
-  setLoading(true)
+  
     // 1. เช็คก่อนว่ามีข้อมูล Voice ID ไหม
     const voiceId = sessionDetail?.selectedDocter?.voiceId;
 
@@ -183,7 +185,7 @@ const StartCall = () => {
         setCallStarted(false);
     })
 
-    setLoading(false)
+    
   }
 
   const endCall = async () => {
@@ -194,6 +196,8 @@ const StartCall = () => {
     const result = await GenerateReport()
 
     setLoading(false)
+    toast.success('รายงานสรุปผลของคุณถูกบันทึกแล้ว')
+    router.replace('dashboard')
   };
 
   const GenerateReport = async () => {
