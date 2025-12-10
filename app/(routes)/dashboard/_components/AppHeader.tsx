@@ -1,6 +1,7 @@
 import { UserButton } from '@clerk/nextjs'
 import { index } from 'drizzle-orm/gel-core'
 import { div, option } from 'motion/react-client'
+import Link from 'next/link'
 import React from 'react'
 
 function AppHeader() {
@@ -8,12 +9,12 @@ function AppHeader() {
         {
             id:1,
             name:"Home",
-            path:'/home'
+            path:'/dashboard'
         },
                 {
             id:2,
             name:"History",
-            path:'/history'
+            path:'/dashboard/history'
         },
                 {
             id:3,
@@ -32,7 +33,7 @@ function AppHeader() {
         <div className='hidden md:flex gap-12 items-center'>
             {menuOption.map((option, index) => (
                 <div key={index}>
-                    <h2 className='hover:font-bold cursor-pointer transition-all duration-300 hover:scale-110'>{option.name}</h2>
+                    <Link href={option.path} className='hover:font-bold cursor-pointer transition-all duration-300 hover:scale-110'>{option.name}</Link>
                 </div>
             ))}
             
