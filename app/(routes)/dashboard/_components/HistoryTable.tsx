@@ -29,9 +29,9 @@ export default function HistoryTable({historyList}:Props) {
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody >
         {historyList.map((record:SessionDetail,index:number)=>(
-          <TableRow>
+          <TableRow key={index}>
             <TableCell className="font-medium">{record.selectedDocter?.specialist}</TableCell>
             <TableCell>{record.notes}</TableCell>
             <TableCell>{moment(new Date(record.createdOn)).fromNow()}</TableCell>
