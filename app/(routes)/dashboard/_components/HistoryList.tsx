@@ -30,7 +30,7 @@ function HistoryList() {
         <div className='flex flex-col items-center justify-center border-2 border-dashed rounded mt-5 gap-2 py-6'>
             <Image src="/questionmark.png" alt="empty" width={200} height={200}/>
             <h2 className='font-bold mt-4'>No Recent Consultations</h2>
-            <p>เอ๊ะ! ดูเหมือนคุณจะยังไม่เคยมาปรึกษาคุณหมอของเราเลยนะ… {!user ? <span>ลงทะเบียนก่อนซิ...</span> : ''}</p>
+            <p className='px-10'>เอ๊ะ! ดูเหมือนคุณจะยังไม่เคยมาปรึกษาคุณหมอของเราเลยนะ… {!user ? <span>ลงทะเบียนก่อนซิ...</span> : ''}</p>
             {user ? <AddNewSessionDialog /> : <Link href='/sign-in'><Button className='mt-2 mb-6'><span className='font-bold text-green-400'>Sign in</span> to Start Consultation</Button></Link>}
         </div> :
         <div>

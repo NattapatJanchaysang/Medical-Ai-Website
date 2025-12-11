@@ -76,8 +76,8 @@ function AddNewSessionDialog() {
       <DialogDescription asChild>
         {!suggestedDocters ? <div>
           {/* // Ask an User Symptoms */}
-          <h2 className='mb-4'>Add Symptoms or Any Other Details</h2>
-          <Textarea className='h-[140px]' placeholder='Add Details here...'
+          <h2 className='mb-4'>ระบุอาการ หรือ รายละเอียดอื่นๆ</h2>
+          <Textarea className='h-[140px]' placeholder='ระบุอาการตรงนี้...'
           onChange={(e)=>setNote(e.target.value)}/>
         </div> : 
         <div>
