@@ -196,8 +196,8 @@ const StartCall = () => {
     const result = await GenerateReport()
 
     setLoading(false)
+    router.replace('/dashboard')
     toast.success('รายงานสรุปผลของคุณถูกบันทึกแล้ว')
-    router.replace('dashboard')
   };
 
   const GenerateReport = async () => {
