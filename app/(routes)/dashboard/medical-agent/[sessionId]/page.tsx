@@ -94,7 +94,7 @@ function MedicalVoiceAgent() {
   };
 
 const StartCall = () => {
-  
+    setLoading(true)
     // 1. เช็คก่อนว่ามีข้อมูล Voice ID ไหม
     const voiceId = sessionDetail?.selectedDocter?.voiceId;
 
@@ -145,6 +145,7 @@ const StartCall = () => {
     vapi.on('call-start', () => {
       console.log('Call started')
       setCallStarted(true);
+      setLoading(false);
     });
 
     vapi.on('call-end', () => {
